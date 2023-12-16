@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Department {{ .Dept.DepartmentName }}</title>
+</head>
+<body>
+<h1>Department #{{.Dept.ID}} {{ .Dept.DepartmentName }}</h1>
+<button type="button" onclick="sendRequest('DELETE')">Delete Department (приведет к увольнению всех сотрудников
+    отдела)
+</button>
+<button type="button"><a href="http://localhost:8080/dept/{{ .Dept.ID }}/edit"
+                         style="text-decoration: none; color: black">Edit Department</a></button>
+<br>
+<br>
+<table cellspacing="3" bgcolor="#000000">
+    <thead>
+    <tr bgcolor="#ffffff">
+        <th>Employee ID</th>
+        <th>Employee Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{ range .Employees }}
+    <tr bgcolor="#ffffff">
+
+        <td><a href="http://localhost:8080/empl/{{ .ID }}">{{ .ID }}</a></td>
+        <td>{{ .Name }} {{ .Surname }}</td>
+
+    </tr>
+    {{ end }}
+    </tbody>
+</table>
+<script>
+    function sendRequest(method) {
+        var xhr = new XMLHttpRequest();
+        const id = (parseInt(window.location.pathname.slice(6)))
+        var url = 'http://localhost:8080/api/dept/' + id + '/delete';
+
+        xhr.open(method, url, true);
+
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                console.log('Request successful!');
+                console.log(xhr.responseText);
+            } else {
+                console.error('Request failed with status:', xhr.status);
+            }
+        };
+
+        xhr.onerror = function () {
+            console.error('Request failed');
+        };
+
+        xhr.send();
+        alert("Post deleted")
+    }</script>
+</body>
+</html>

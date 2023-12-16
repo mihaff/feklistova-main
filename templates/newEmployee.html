@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .Title}}</title></head>
+<body>
+<h1>{{.Title}}</h1>
+
+<form id="NewPost" action="http://localhost:8080/api/empl/newemployee" method="POST" enctype="multipart/form-data">
+    <label for="surname">Surname</label>
+    <input type="text" id="surname" name="surname" required>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="deptID">Department ID</label>
+    <input type="text" id="deptID" name="deptID" required>
+
+    <button type="submit">Записать</button>
+</form>
+
+</body>
+</html>

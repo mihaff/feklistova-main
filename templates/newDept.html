@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .Title}}</title>
+</head>
+<body>
+<h1>{{ .Title}}</h1>
+    <form id="NewPost" action="http://localhost:8080/api/dept/newdept" method="POST" enctype="multipart/form-data">
+        <label for="deptName">Название отдела</label>
+        <input type="text" id="deptName" name="deptName" required>
+        <button type="submit">Опубликовать</button>
+    </form>
+
+</body>
+</html>

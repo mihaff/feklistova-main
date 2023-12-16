@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee {{ .Employee.Surname}}</title>
+</head>
+<body>
+<h1>Employee {{ .Employee.Surname}} {{ .Employee.Name}} #{{ .Employee.ID}}</h1>
+<button type="button" onclick="sendRequest('DELETE')">Fire Employee</button>
+<button type="button"><a href="http://localhost:8080/empl/{{ .Employee.ID }}/edit" style="text-decoration: none; color: black">Edit Employee Profile</a></button><br>
+Department: {{ .Employee.Department.DepartmentName }} #{{.Employee.Department.ID}}
+
+<script>
+    function sendRequest(method) {
+        var xhr = new XMLHttpRequest();
+        const id = (parseInt(window.location.pathname.slice(7)))
+        var url = 'http://localhost:8080/api/empl/' + id + '/delete';
+
+        xhr.open(method, url, true);
+
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                console.log('Request successful!');
+                console.log(xhr.responseText);
+            } else {
+                console.error('Request failed with status:', xhr.status);
+            }
+        };
+
+        xhr.onerror = function () {
+            console.error('Request failed');
+        };
+
+        xhr.send();
+        alert("Employee fired")
+    }</script>
+</body>
+</html>

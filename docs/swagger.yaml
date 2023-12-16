@@ -1,0 +1,199 @@
+basePath: /api
+host: localhost:8080
+info:
+  contact:
+    email: esalesina_1@edu.hse.ru
+    name: Polina Feklistova
+  description: API-документация для реализации программы HR-отдела
+  title: HR Department API
+  version: "1.0"
+paths:
+  /dept:
+    get:
+      consumes:
+      - application/json
+      operationId: all-depts
+      produces:
+      - application/json
+      responses: {}
+      summary: REST ручка для получения всех отделов
+      tags:
+      - departments
+  /dept/{id}:
+    get:
+      consumes:
+      - application/json
+      operationId: get-dept-by-id
+      parameters:
+      - description: postId
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: REST ручка получения отдела по ID
+      tags:
+      - departments
+  /dept/{id}/delete:
+    delete:
+      consumes:
+      - application/json
+      operationId: delete-dept
+      parameters:
+      - description: deptID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: REST ручка удаления отдела
+      tags:
+      - departments
+  /dept/{id}/edit:
+    put:
+      consumes:
+      - multipart/form-data
+      operationId: edit-dept
+      parameters:
+      - description: departmentName
+        in: formData
+        name: deptName
+        required: true
+        type: string
+      - description: departmentId
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: REST ручка для изменения отдела
+      tags:
+      - departments
+  /dept/newdept:
+    post:
+      consumes:
+      - multipart/form-data
+      operationId: newdept
+      parameters:
+      - description: department name
+        in: formData
+        name: deptName
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: REST ручка для создания нового отдела
+      tags:
+      - departments
+  /empl:
+    get:
+      consumes:
+      - application/json
+      operationId: all-empl
+      produces:
+      - application/json
+      responses: {}
+      summary: REST ручка вывода всех пользователей
+      tags:
+      - employees
+  /empl/{id}:
+    get:
+      consumes:
+      - application/json
+      operationId: empl-by-id
+      parameters:
+      - description: Empl ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: REST ручка для получения сотрудника по ID
+      tags:
+      - employees
+  /empl/{id}/delete:
+    delete:
+      consumes:
+      - application/json
+      operationId: delete-empl
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: REST ручка для удаления профиля сотрудника
+      tags:
+      - employees
+  /empl/{id}/edit:
+    put:
+      consumes:
+      - multipart/form-data
+      operationId: edit-empl
+      parameters:
+      - description: userId
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: surname
+        in: formData
+        name: surname
+        required: true
+        type: string
+      - description: name
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: deptID
+        in: formData
+        name: deptID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: REST - ручка для изменения профиля сотрудника
+      tags:
+      - employees
+  /empl/newemployee:
+    post:
+      consumes:
+      - multipart/form-data
+      operationId: new-employee
+      parameters:
+      - description: surname
+        in: formData
+        name: surname
+        required: true
+        type: string
+      - description: name
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: deptID
+        in: formData
+        name: deptID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: REST ручка для регистрации нового сотрудника
+      tags:
+      - employees
+swagger: "2.0"

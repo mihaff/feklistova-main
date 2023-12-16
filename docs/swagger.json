@@ -1,0 +1,290 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API-документация для реализации программы HR-отдела",
+        "title": "HR Department API",
+        "contact": {
+            "name": "Polina Feklistova",
+            "email": "esalesina_1@edu.hse.ru"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api",
+    "paths": {
+        "/dept": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "departments"
+                ],
+                "summary": "REST ручка для получения всех отделов",
+                "operationId": "all-depts",
+                "responses": {}
+            }
+        },
+        "/dept/newdept": {
+            "post": {
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "departments"
+                ],
+                "summary": "REST ручка для создания нового отдела",
+                "operationId": "newdept",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "department name",
+                        "name": "deptName",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/dept/{id}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "departments"
+                ],
+                "summary": "REST ручка получения отдела по ID",
+                "operationId": "get-dept-by-id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "postId",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/dept/{id}/delete": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "departments"
+                ],
+                "summary": "REST ручка удаления отдела",
+                "operationId": "delete-dept",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "deptID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/dept/{id}/edit": {
+            "put": {
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "departments"
+                ],
+                "summary": "REST ручка для изменения отдела",
+                "operationId": "edit-dept",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "departmentName",
+                        "name": "deptName",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "departmentId",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/empl": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "employees"
+                ],
+                "summary": "REST ручка вывода всех пользователей",
+                "operationId": "all-empl",
+                "responses": {}
+            }
+        },
+        "/empl/newemployee": {
+            "post": {
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "employees"
+                ],
+                "summary": "REST ручка для регистрации нового сотрудника",
+                "operationId": "new-employee",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "surname",
+                        "name": "surname",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "name",
+                        "name": "name",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "deptID",
+                        "name": "deptID",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/empl/{id}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "employees"
+                ],
+                "summary": "REST ручка для получения сотрудника по ID",
+                "operationId": "empl-by-id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Empl ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/empl/{id}/delete": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "employees"
+                ],
+                "summary": "REST ручка для удаления профиля сотрудника",
+                "operationId": "delete-empl",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "User ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/empl/{id}/edit": {
+            "put": {
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "employees"
+                ],
+                "summary": "REST - ручка для изменения профиля сотрудника",
+                "operationId": "edit-empl",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "userId",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "surname",
+                        "name": "surname",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "name",
+                        "name": "name",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "deptID",
+                        "name": "deptID",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    }
+}

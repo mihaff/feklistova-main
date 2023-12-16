@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>{{ .Title}}</h1>
+<table cellspacing="3" bgcolor="#000000">
+    <thead>
+    <tr bgcolor="#ffffff">
+        <th>Employee ID</th>
+        <th>Employee Name</th>
+        <th>Employee Department</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{ range .Employees }}
+    <tr bgcolor="#ffffff">
+
+        <td><a href="http://localhost:8080/empl/{{ .ID }}">{{ .ID }}</a></td>
+        <td>{{ .Name }} {{ .Surname }}</td>
+        <td>{{.Department.DepartmentName}}</td>
+
+    </tr>
+    {{ end }}
+    </tbody>
+</table>
+</body>
+</html>
